@@ -7,7 +7,6 @@ const fs = require("fs");
 /**
  *
  * @param imagePath => EXTERNAL >> First image (buffer or path string)
- * @param imagePath2 => EXTERNAL >> Second image (buffer or path string)
  * @returns {Promise<*[boolean]>} =>
  * @private
  */

@@ -1,10 +1,10 @@
-const imageDiff = require("./index");
+const imageHash = require("./index");
 
 async function exampleCases () {
     /* Comparing the same image from its paths */
     console.log("== SAME IMAGE COMPARISON ==")
     let startTime = Date.now()
-    const fromRawImages = await imageDiff.compareImages("./images/base-image.jpg", "./images/base-image.jpg")
+    const fromRawImages = await imageHash.compareImages("./images/base-image.jpg", "./images/base-image.jpg")
     // => Outputs 0 (no differences detected)
 
     console.log("RESULTS:")
@@ -17,7 +17,7 @@ async function exampleCases () {
     /* Comparing the different images from its paths */
     console.log("== DIFFERENT IMAGE COMPARISON ==")
     startTime = Date.now()
-    const differentRawImages = await imageDiff.compareImages("./images/base-image.jpg", "./images/different-image.jpg")
+    const differentRawImages = await imageHash.compareImages("./images/base-image.jpg", "./images/different-image.jpg")
     // => Outputs X > 0 (difference detected)
 
     console.log("RESULTS:")
@@ -37,7 +37,7 @@ async function exampleCases () {
     */
     console.log("== SAME IMAGE FROM HASH ==")
     startTime = Date.now() // reset time counting
-    const fromHash = imageDiff.compareHashes(fromRawImages.hashes.image0, fromRawImages.hashes.image0)
+    const fromHash = imageHash.compareHashes(fromRawImages.hashes.image0, fromRawImages.hashes.image0)
 
     console.log("RESULTS:")
     console.log("> Distance:", fromHash) // In this case, the hashes aren't part of the function's return.
