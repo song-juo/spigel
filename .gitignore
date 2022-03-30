@@ -4,7 +4,3 @@
 # NODEJS VENDOR
 node_modules
 package-lock.json
-
-# PROJECT SPECIFIC PATH's
-example
-example.js

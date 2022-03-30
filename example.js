@@ -1,0 +1,3 @@
+const imageDiff = require("./index");
+
+(() => {})()
