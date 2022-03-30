@@ -21,12 +21,12 @@ async function someFunction() {
     const difference = await imageHash.compareImages("PATH/TO/IMAGE0", "PATH/TO/IMAGE1");
     // Outputs: { distance: number, hashes: { image0: string, image1: string }}
     
-	/* Comparing images from its generated hashes */
-	const differenceHash = imageHash.compareHashes("HASH", "HASH2");
+    /* Comparing images from its generated hashes */
+    const differenceHash = imageHash.compareHashes("HASH", "HASH2");
     // Outputs: distance (number)
     
     /* Generate hash from a single image */
-	const myHash = await imageHash.calculateHash("PATH/TO/IMAGE");
+    const myHash = await imageHash.calculateHash("PATH/TO/IMAGE");
     // Outputs: hash (string, length: 18)
 }
 ```
