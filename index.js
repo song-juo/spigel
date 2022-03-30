@@ -7,7 +7,7 @@ const fs = require("fs");
 /**
  *
  * @param imagePath => EXTERNAL >> First image (buffer or path string)
- * @returns {Promise<*[boolean]>} =>
+ * @returns {Promise<*[boolean]>}
  * @private
  */
 async function _difference (imagePath) {

@@ -36,6 +36,7 @@ async function someFunction() {
 - [x] Implement Dhash
 - [x] Cleanup code & comments
 - [x] Publish first release to GitHub
-- [x] Convert code into TypeScript (or add typings)
+- [ ] Convert code into TypeScript (or add typings)
+- [ ] Make it able to be posted in NPM
 - [ ] Publish first release to NPM
 
