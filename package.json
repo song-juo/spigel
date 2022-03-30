@@ -11,10 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "big-integer": "^1.6.51",
-    "gm": "^1.23.1",
-    "imagemagick": "^0.1.3",
-    "png-js": "^1.0.0",
-    "sharp": "^0.30.3",
-    "stream-to-array": "^2.3.0"
+    "sharp": "^0.30.3"
   }
 }
