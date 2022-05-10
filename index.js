@@ -1,6 +1,6 @@
-const sharp = require("sharp");
-const bigInt = require("big-integer");
-const fs = require("fs");
+const sharp = require("sharp")
+const bigInt = require("big-integer")
+const fs = require("fs")
 
 /* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
 
@@ -23,7 +23,7 @@ async function _difference (imagePath) {
         .toBuffer()
 
     const pixels = new Int32Array(treatedImage)
-    let difference = [];
+    let difference = []
 
     for (let i = 0; i < baseHeight; i++) {
         let startRow = i * baseWidth
@@ -102,8 +102,8 @@ async function distanceImages (imagePath, imageSecPath) {
  */
 function hex2Dec(hexString) {
     if (hexString.length % 2) { hexString = '0' + hexString; }
-    const bigNumber = BigInt('0x' + hexString);
-    return bigNumber.toString(10);
+    const bigNumber = BigInt('0x' + hexString)
+    return bigNumber.toString(10)
 }
 
 module.exports = {
