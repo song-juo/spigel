@@ -20,7 +20,7 @@ npm install --save @myur4/dhash
 ### 🖼️ How to use it? Let's see:
 
 ```js
-const imageHash = require("image-hash");
+const imageHash = require("@myur4/dhash");
 
 async function someFunction() {
     /* Compares images from its paths */
