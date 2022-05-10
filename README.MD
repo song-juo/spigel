@@ -1,6 +1,6 @@
 
 <div align="center">
-  <h1>🔎 dHash.js</h1>
+  <h1>🔎 Dhash</h1>
 </div>
 
 ![Imgur](https://i.imgur.com/0yaLSxn.png)
