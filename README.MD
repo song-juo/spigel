@@ -11,6 +11,12 @@ Actually, that's the only decent and full-maintained package which implements *D
 
 The **distance** between two images is measured according to its distance, which **0 means EQUAL/NOT DIFFERENCE FOUND** and anything **> 0** means a difference level found. Inside our tests, comparisons which returns a distance greater than 20 represent a completely different image, and **1~5** represents a huge similarity.
 
+### Installation
+
+```
+npm install --save @myur4/dhash
+```
+
 ### 🖼️ How to use it? Let's see:
 
 ```js
@@ -36,7 +42,7 @@ async function someFunction() {
 - [x] Implement Dhash
 - [x] Cleanup code & comments
 - [x] Publish first release to GitHub
+- [x] Make it able to be posted in NPM
+- [x] Publish first release to NPM
 - [ ] Convert code into TypeScript (or add typings)
-- [ ] Make it able to be posted in NPM
-- [ ] Publish first release to NPM
 
