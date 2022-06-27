@@ -24,7 +24,7 @@ const imageHash = require("@myur4/dhash");
 
 async function someFunction() {
     /* Compares images from its paths */
-    const difference = await imageHash.compareImages("PATH/TO/IMAGE0", "PATH/TO/IMAGE1");
+    const difference = await imageHash.compareImages("IMAGE BUFFER/PATH", "IMAGE BUFFER/PATH");
     // Outputs: { distance: number, hashes: { image0: string, image1: string }}
     
     /* Comparing images from its generated hashes */
@@ -44,5 +44,4 @@ async function someFunction() {
 - [x] Publish first release to GitHub
 - [x] Make it able to be posted in NPM
 - [x] Publish first release to NPM
-- [ ] Convert code into TypeScript (or add typings)
 

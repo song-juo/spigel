@@ -5,16 +5,15 @@ const fs = require("fs")
 /* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
 
 /**
- *
- * @param imagePath => EXTERNAL >> First image (buffer or path string)
+ * @param image image path or buffer
  * @returns {Promise<*[boolean]>}
  * @private
  */
-async function _difference (imagePath) {
+async function _difference (image) {
 
     const baseWidth = 9
     const baseHeight = 8
-    const baseBuffer = fs.readFileSync(imagePath)
+    const baseBuffer = fs.readFileSync(image)
 
     const treatedImage = await sharp(baseBuffer)
         .resize(baseWidth, baseHeight) // 9x8 = 72 pixels
@@ -38,8 +37,8 @@ async function _difference (imagePath) {
 
 /**
  *
- * @param imagePath => Path to an image
- * @returns {Promise<string>} => Returns the hash text for the image
+ * @param imagePath Path to an image
+ * @returns {Promise<string>} Returns the hash text for the image
  */
 async function calcHash(imagePath) {
     const difference = await _difference(imagePath)
@@ -62,10 +61,9 @@ async function calcHash(imagePath) {
 }
 
 /**
- *
- * @param hash (external) => Hash string
- * @param hash2 (external) => ""  ""
- * @returns {number} => Distance between two hashes (always >= 0)
+ * @param hash Hash string
+ * @param hash2 Hash string
+ * @returns {number} Hash difference
  */
 function computeDistance(hash, hash2) {
     const calcHash = hex2Dec(hash)
@@ -78,12 +76,8 @@ function computeDistance(hash, hash2) {
 
 /**
  *
- * @param imagePath => Path for an image
- * @param imageSecPath => Path to another, or the same image
- *
- * Compares two images form theis paths, automatically generating
- * their respective hashes in the process.
- *
+ * @param imagePath Image (Buffer or Path)
+ * @param imageSecPath Image (Buffer or Path)
  * @returns {Promise<{distance: number, hashes: {image1: string, image0: string}}>}
  */
 
@@ -98,7 +92,7 @@ async function distanceImages (imagePath, imageSecPath) {
 /**
  * this conversion function was "forked" from https://stackoverflow.com/questions/12532871/how-to-convert-a-very-large-hex-number-to-decimal-in-javascript
  * which is a complete life savior, since NodeJS built-in method "parseInt(..., ...)" wasn't capable to represent big hex (>2^53) precisely.
- * @param hexString => A huge hex :D
+ * @param hexString => Hex string
  */
 function hex2Dec(hexString) {
     if (hexString.length % 2) { hexString = '0' + hexString; }
