@@ -8,4 +8,4 @@ pnpm-lock.yaml
 # Exclude test file & typescript product
 src/test.ts
 dist
-gbg
+gbg1
