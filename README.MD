@@ -17,23 +17,14 @@ The **distance** between two images is measured according to its distance, which
 npm install --save @myur4/dhash
 ```
 
-### 🖼️ How to use it? Let's see:
+### 🖼️ It's simple as:
 
 ```js
-const imageHash = require("@myur4/dhash");
+import { compare } from './index';
 
 async function someFunction() {
-    /* Compares images from its paths */
-    const difference = await imageHash.compareImages("IMAGE BUFFER/PATH", "IMAGE BUFFER/PATH");
-    // Outputs: { distance: number, hashes: { image0: string, image1: string }}
-    
-    /* Comparing images from its generated hashes */
-    const differenceHash = imageHash.compareHashes("HASH", "HASH2");
-    // Outputs: distance (number)
-    
-    /* Generate hash from a single image */
-    const myHash = await imageHash.calculateHash("PATH/TO/IMAGE");
-    // Outputs: hash (string, length: 18)
+   const result = await compare(string or buffer, string or buffer);
+   // => Outputs the difference between the input, and it's correspondent hashes.
 }
 ```
 
@@ -44,4 +35,5 @@ async function someFunction() {
 - [x] Publish first release to GitHub
 - [x] Make it able to be posted in NPM
 - [x] Publish first release to NPM
-
+- [x] Ensure support for cross-comparisons between strings and buffers 
+- [ ] Full Typescript conversion
