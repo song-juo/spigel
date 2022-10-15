@@ -4,3 +4,7 @@
 # NODEJS VENDOR
 node_modules
 package-lock.json
+
+# Exclude test file & typescript product
+src/test.ts
+dist
