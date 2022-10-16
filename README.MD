@@ -14,7 +14,7 @@ The **distance** between two images is measured according to its distance, which
 ### Installation
 
 ```
-npm install --save @myur4/dhash
+npm install --save tamayo
 ```
 
 ### 🖼️ It's simple as:
