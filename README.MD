@@ -28,6 +28,9 @@ async function someFunction() {
 }
 ```
 
+### Documentation
+
+
 ## 📝 TODO LIST
 
 - [x] Implement Dhash

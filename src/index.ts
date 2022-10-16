@@ -2,9 +2,17 @@ import sharp from 'sharp';
 import bigInt from 'big-integer'; // NodeJS built-in functions doesn't support large operations (>2^53). So, the native "xor" operator would be useless here.
 import fs from 'fs';
 
-import { ComparisonOptions, ComparisonResult } from '../index';
-
 /* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
+
+interface ComparisonOptions {
+    verbose: boolean
+    hashes: boolean
+}
+
+interface ComparisonResult {
+    distance: number
+    hashes: { image: string, image2: string }
+}
 
 async function _difference(image: string | Buffer): Promise<boolean[]> {
 
@@ -67,7 +75,7 @@ function compareHash(hash: string, hash2: string): number {
 export async function compare(imagePath: string | Buffer, image2: string | Buffer, options?: ComparisonOptions): Promise<ComparisonResult>{
     const firstHash = await calculate(imagePath)
     const secondHash = await calculate(image2)
-    
+
     const dist = compareHash(firstHash, secondHash)
 
     return {distance: dist, hashes: {image: firstHash, image2: secondHash}}

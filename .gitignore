@@ -7,5 +7,4 @@ pnpm-lock.yaml
 
 # Exclude test file & typescript product
 src/test.ts
-dist
-gbg1
+garbage

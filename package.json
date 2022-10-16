@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc && node dist/test.js"
+    "dev": "tsc && node dist/test.js",
+    "build": "tsc --declaration"
   },
   "keywords": [],
   "author": "George Santos (A.K.A Myur4)",
