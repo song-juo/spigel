@@ -1,90 +1,30 @@
-import sharp from 'sharp';
-import bigInt from 'big-integer'; // NodeJS built-in functions doesn't support large operations (>2^53). So, the native "xor" operator would be useless here.
-import fs from 'fs';
+import type DifferencialHash from './structures/dHash';
+import type PerceptualHash from './structures/pHash';
+import type {ComparisonOptions} from './typing';
 
-/* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
+import PHash from './structures/pHash';
+import DHash from './structures/dHash';
+import type {DistanceResult} from './typing/structures';
+import { readFileSync } from 'fs';
 
-interface ComparisonOptions {
-    verbose: boolean
-    hashes: boolean
-}
+export default new class Tamayo {
+	private readonly _dHash: DifferencialHash;
+	private readonly _pHash: PerceptualHash;
 
-interface ComparisonResult {
-    distance: number
-    hashes: { image: string, image2: string }
-}
+	constructor() {
+		this._dHash = new DHash();
+		this._pHash = new PHash();
+	}
 
-async function _difference(image: string | Buffer): Promise<boolean[]> {
+	public async compare(imageA: string | Buffer, imageB: string | Buffer, options: ComparisonOptions = {algorithm: 'phash'}): Promise<DistanceResult> {
+		const humanize = Boolean(options?.humanize);
 
-    const baseWidth = 9
-    const baseHeight = 8
-    const baseBuffer = typeof image == "string" ? fs.readFileSync(image) : image;
+		const _image = typeof imageA === 'string' ? readFileSync(imageA) : imageA;
 
-    const treatedImage = await sharp(baseBuffer)
-        .resize(baseWidth, baseHeight) // 9x8 = 72 pixels
-        .grayscale()
-        .raw()
-        .toBuffer()
+		if (options.algorithm === 'dhash') {
+			return this._dHash.distance(imageA, imageB, humanize);
+		}
 
-    const pixels = new Int32Array(treatedImage)
-    let difference = []
-
-    for (let i = 0; i < baseHeight; i++) {
-        let startRow = i * baseWidth
-        for (let j = 0; j < baseWidth - 1; j++) {
-            let left_pixel_index = startRow + j
-            difference.push(pixels[left_pixel_index] > pixels[left_pixel_index + 1])
-        }
-    }
-
-    return difference
-}
-
-export async function calculate(imagePath: string | Buffer): Promise<string> {
-    const difference = await _difference(imagePath)
-
-    let decimalValue = 0
-    let hashString = ""
-
-    for (const [index, value] of difference.entries()) {
-
-        const numericValue = value ? 1 : 0;
-
-        if (value) {
-            decimalValue += numericValue * (2 ** (index % 8))
-        }
-        if (index % 8 === 7) {
-            let parsedHex = decimalValue.toString(16).slice(-2).padStart(2, "0")
-            hashString += parsedHex
-            decimalValue = 0
-        }
-    }
-
-    return hashString
-}
-
-function compareHash(hash: string, hash2: string): number {
-    const calcHash = hex2Dec(hash)
-    const calcHash2 = hex2Dec(hash2)
-
-    const difference = bigInt(calcHash).xor(calcHash2)
-
-    return difference.toString(2).split("1").length - 1
-}
-
-export async function compare(imagePath: string | Buffer, image2: string | Buffer, options?: ComparisonOptions): Promise<ComparisonResult>{
-    const firstHash = await calculate(imagePath)
-    const secondHash = await calculate(image2)
-
-    const dist = compareHash(firstHash, secondHash)
-
-    return {distance: dist, hashes: {image: firstHash, image2: secondHash}}
-}
-
-function hex2Dec(hex: string) {
-    if (hex.length % 2) {
-        hex = '0' + hex;
-    }
-    const bigNumber = BigInt('0x' + hex)
-    return bigNumber.toString(10)
-}
+		return this._pHash.distance(imageA, imageB, humanize);
+	}
+}();
