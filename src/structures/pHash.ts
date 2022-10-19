@@ -6,6 +6,7 @@ import type {DistanceResult} from '../typing/structures';
 
 import {readFileSync} from 'fs';
 import sharp from 'sharp';
+import Utils from "./utils";
 
 export default class PerceptualHash {
 	private readonly size: number;
@@ -68,16 +69,8 @@ export default class PerceptualHash {
 		const result: DistanceResult = {distance: _distance, hashes: {hashA: hash1, hashB: hash2}};
 
 		if (humanize) {
-			if (_distance === 0) {
-				result.distance = 'identical';
-			} else if (_distance > 0 && _distance < 5) {
-				result.distance = 'high similarity';
-			} else if (_distance > 5 && _distance < 10) {
-				result.distance = 'low similarity';
-			} else {
-				result.distance = 'completely different';
-			}
-		}
+            result.distance = Utils.humanize(_distance);
+        }
 
 		return result;
 	}
