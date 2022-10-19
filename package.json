@@ -21,6 +21,11 @@
   "devDependencies": {
     "@types/node": "^18.11.0",
     "@types/sharp": "^0.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-config-xo": "^0.42.0",
+    "eslint-config-xo-typescript": "^0.53.0",
     "typescript": "^4.8.4"
   }
 }
