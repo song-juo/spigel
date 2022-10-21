@@ -1,13 +1,11 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 
-import type {ComparisonOptions} from '../typing';
 import type {DistanceResult} from '../typing/structures';
 
-import {readFileSync} from 'fs';
 import sharp from 'sharp';
-import Utils from "./utils";
-
+import Utils from './Utils';
 export default class PerceptualHash {
 	private readonly size: number;
 	private readonly lowSize: number;
@@ -25,12 +23,11 @@ export default class PerceptualHash {
 			.raw()
 			.toBuffer();
 
-		const signal = new Array(this.size);
-
-		for (let x = 0; x < this.size; x++) {
-			signal[x] = new Array(this.size);
-			for (let y = 0; y < this.size; y++) {
-				signal[x][y] = image[this.size * (y + x)];
+		const signal = new Array(32);
+		for (let x = 0; x < 32; x++) {
+			signal[x] = new Array(32);
+			for (let y = 0; y < 32; y++) {
+				signal[x][y] = image[this.size * y + x];
 			}
 		}
 
@@ -38,7 +35,6 @@ export default class PerceptualHash {
 		const cosine = this._setCosine();
 
 		const dct = this._initDct(signal, cosine, sqrt);
-
 		let finalSum = 0;
 
 		for (let x = 0; x < this.lowSize; x++) {
@@ -69,8 +65,8 @@ export default class PerceptualHash {
 		const result: DistanceResult = {distance: _distance, hashes: {hashA: hash1, hashB: hash2}};
 
 		if (humanize) {
-            result.distance = Utils.humanize(_distance);
-        }
+			result.distance = Utils.humanize(_distance);
+		}
 
 		return result;
 	}
@@ -116,8 +112,6 @@ export default class PerceptualHash {
 	private _initDct(signal: number[][], cos: any, sqrt: number[]) {
 		const {size} = this;
 		const sampleArr = new Array(size);
-
-		console.log(size, sampleArr);
 
 		for (let u = 0; u < size; u++) {
 			sampleArr[u] = new Array(size);

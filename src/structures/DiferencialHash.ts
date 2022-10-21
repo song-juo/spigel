@@ -2,7 +2,6 @@ import sharp from 'sharp';
 import bigInt from 'big-integer';
 import {readFileSync} from 'fs';
 
-import type {ComparisonOptions} from '../typing';
 import type {DistanceResult} from '../typing/structures';
 
 /* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
