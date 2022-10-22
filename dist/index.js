@@ -28,4 +28,13 @@ exports.default = new class Tamayo {
             return this._pHash.distance(imageA, imageB, humanize);
         });
     }
+    compareHash(hashA, hashB, options = { algorithm: 'phash', humanize: false }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const humanize = Boolean(options === null || options === void 0 ? void 0 : options.humanize);
+            if (options.algorithm === 'dhash') {
+                return this._dHash.distanceHash(hashA, hashB, humanize);
+            }
+            return this._pHash.distanceHash(hashA, hashB, humanize);
+        });
+    }
 }();

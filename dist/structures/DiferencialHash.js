@@ -41,21 +41,22 @@ class DifferencialHash {
             return hashString;
         });
     }
-    compareHash(hash, hash2) {
+    distanceHash(hash, hash2, humanize) {
         const calcHash = this._hex2Dec(hash);
         const calcHash2 = this._hex2Dec(hash2);
+        console.log(calcHash);
         const difference = (0, big_integer_1.default)(calcHash).xor(calcHash2);
+        if (humanize) {
+            return Utils_1.default.humanize(Number(difference));
+        }
         return difference.toString(2).split('1').length - 1;
     }
     distance(imagePath, image2, humanize) {
         return __awaiter(this, void 0, void 0, function* () {
             const firstHash = yield this.execute(imagePath);
             const secondHash = yield this.execute(image2);
-            const dist = this.compareHash(firstHash, secondHash);
+            const dist = this.distanceHash(firstHash, secondHash, humanize);
             const result = { distance: dist, hashes: { hashA: firstHash, hashB: secondHash } };
-            if (humanize) {
-                result.distance = Utils_1.default.humanize(dist);
-            }
             return result;
         });
     }

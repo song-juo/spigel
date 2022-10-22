@@ -26,22 +26,22 @@ class PerceptualHash {
         return __awaiter(this, void 0, void 0, function* () {
             const hash1 = yield this.execute(imageA);
             const hash2 = yield this.execute(imageB);
-            const _distance = this.distanceHash(hash1, hash2);
+            const _distance = this.distanceHash(hash1, hash2, humanize);
             const result = { distance: _distance, hashes: { hashA: hash1, hashB: hash2 } };
-            if (humanize) {
-                result.distance = Utils_1.default.humanize(_distance);
-            }
             return result;
         });
     }
-    distanceHash(a, b) {
-        let count = 0;
+    distanceHash(a, b, humanize) {
+        let distance = 0;
         for (let i = 0; i < a.length; i++) {
             if (a[i] !== b[i]) {
-                count++;
+                distance++;
             }
         }
-        return count;
+        if (humanize) {
+            return Utils_1.default.humanize(distance);
+        }
+        return distance;
     }
     execute(image) {
         return __awaiter(this, void 0, void 0, function* () {
