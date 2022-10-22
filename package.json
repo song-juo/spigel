@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "big-integer": "^1.6.51",
-    "sharp": "^0.30.3"
+    "sharp": "^0.31.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.0",
