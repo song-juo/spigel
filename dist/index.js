@@ -37,4 +37,12 @@ exports.default = new class Tamayo {
             return this._pHash.distanceHash(hashA, hashB, humanize);
         });
     }
+    hash(image, algorithm) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (algorithm === 'dhash') {
+                return this._dHash.execute(image);
+            }
+            return this._pHash.execute(image);
+        });
+    }
 }();
