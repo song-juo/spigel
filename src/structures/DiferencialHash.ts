@@ -3,6 +3,7 @@ import bigInt from 'big-integer';
 import {readFileSync} from 'fs';
 
 import type {DistanceResult} from '../typing/structures';
+import Utils from './Utils';
 
 /* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
 
@@ -47,19 +48,18 @@ export default class DifferencialHash {
 		return difference.toString(2).split('1').length - 1;
 	}
 
-	public async distance(imagePath: string | Buffer, image2: string | Buffer, humanize = false): Promise<DistanceResult> {
+	public async distance(imagePath: string | Buffer, image2: string | Buffer, humanize: boolean): Promise<DistanceResult> {
 		const firstHash = await this.execute(imagePath);
 		const secondHash = await this.execute(image2);
 
 		const dist = this.compareHash(firstHash, secondHash);
+		const result: DistanceResult = {distance: dist, hashes: {hashA: firstHash, hashB: secondHash}};
 
-		return {
-			distance: dist,
-			hashes: {
-				hashA: firstHash,
-				hashB: secondHash,
-			},
-		};
+		if (humanize) {
+			result.distance = Utils.humanize(dist);
+		}
+
+		return result;
 	}
 
 	private async _difference(image: string | Buffer): Promise<boolean[]> {
