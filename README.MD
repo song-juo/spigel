@@ -13,11 +13,11 @@ npm i tamayo
 
 ### 🖼️ It's simple as:
 
-```js
-import { compare } from  'tamayo';
+```ts
+import { compare } from 'tamayo';
 
-async  function  someFunction() {
-const  result = await  compare(string  or  buffer, string  or  buffer);
+async function someFunction() {
+const result = await compare('./example.png', './example.jpg');
 // => Outputs the difference between the input, and it's correspondent hashes.
 }
 ```
@@ -28,7 +28,7 @@ Coming soon...
 
 ### 📝 ToDo List - Please, contribute!
 
-- [x] Implement Dhash
+- [x] Implement Dhash (Difference Hash)
 
 - [x] Cleanup code & comments
 
@@ -42,4 +42,9 @@ Coming soon...
 
 - [x] Ensure support for cross-comparisons between strings and buffers
 
-- [ ] Implement pHash (Perceptual Hash)
+- [x] Implement pHash (Perceptual Hash)
+
+- [ ] Function to Class structure conversion
+    - [ ] Convert algorithm functions to classes
+    - [ ] 
+    - [ ] 
