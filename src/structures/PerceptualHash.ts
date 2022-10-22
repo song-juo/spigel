@@ -19,26 +19,25 @@ export default class PerceptualHash {
 		const hash1 = await this.execute(imageA);
 		const hash2 = await this.execute(imageB);
 
-		const _distance = this.distanceHash(hash1, hash2);
-
+		const _distance = this.distanceHash(hash1, hash2, humanize);
 		const result: DistanceResult = {distance: _distance, hashes: {hashA: hash1, hashB: hash2}};
-
-		if (humanize) {
-			result.distance = Utils.humanize(_distance);
-		}
 
 		return result;
 	}
 
-	public distanceHash(a: string, b: string) {
-		let count = 0;
+	public distanceHash(a: string, b: string, humanize: boolean) {
+		let distance = 0;
 		for (let i = 0; i < a.length; i++) {
 			if (a[i] !== b[i]) {
-				count++;
+				distance++;
 			}
 		}
 
-		return count;
+		if (humanize) {
+			return Utils.humanize(distance);
+		}
+
+		return distance;
 	}
 
 	private async execute(image: string | Buffer) {

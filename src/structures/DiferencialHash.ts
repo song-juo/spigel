@@ -39,11 +39,17 @@ export default class DifferencialHash {
 		return hashString;
 	}
 
-	public compareHash(hash: string, hash2: string): number {
+	public distanceHash(hash: string, hash2: string, humanize: boolean): string | number {
 		const calcHash = this._hex2Dec(hash);
 		const calcHash2 = this._hex2Dec(hash2);
 
+		console.log(calcHash);
+
 		const difference = bigInt(calcHash).xor(calcHash2);
+
+		if (humanize) {
+			return Utils.humanize(Number(difference));
+		}
 
 		return difference.toString(2).split('1').length - 1;
 	}
@@ -52,12 +58,8 @@ export default class DifferencialHash {
 		const firstHash = await this.execute(imagePath);
 		const secondHash = await this.execute(image2);
 
-		const dist = this.compareHash(firstHash, secondHash);
+		const dist = this.distanceHash(firstHash, secondHash, humanize);
 		const result: DistanceResult = {distance: dist, hashes: {hashA: firstHash, hashB: secondHash}};
-
-		if (humanize) {
-			result.distance = Utils.humanize(dist);
-		}
 
 		return result;
 	}
