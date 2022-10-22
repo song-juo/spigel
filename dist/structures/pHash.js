@@ -1,5 +1,4 @@
 "use strict";
-/* eslint-disable no-mixed-operators */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -22,27 +21,6 @@ class PerceptualHash {
         this.size = 32;
         this.lowSize = 8;
     }
-    distance(imageA, imageB, humanize) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const hash1 = yield this.execute(imageA);
-            const hash2 = yield this.execute(imageB);
-            const _distance = this.distanceHash(hash1, hash2);
-            const result = { distance: _distance, hashes: { hashA: hash1, hashB: hash2 } };
-            if (humanize) {
-                result.distance = Utils_1.default.humanize(_distance);
-            }
-            return result;
-        });
-    }
-    distanceHash(a, b) {
-        let count = 0;
-        for (let i = 0; i < a.length; i++) {
-            if (a[i] !== b[i]) {
-                count++;
-            }
-        }
-        return count;
-    }
     execute(image) {
         return __awaiter(this, void 0, void 0, function* () {
             image = yield (0, sharp_1.default)(image)
@@ -51,11 +29,11 @@ class PerceptualHash {
                 .rotate()
                 .raw()
                 .toBuffer();
-            const signal = new Array(32);
-            for (let x = 0; x < 32; x++) {
-                signal[x] = new Array(32);
-                for (let y = 0; y < 32; y++) {
-                    signal[x][y] = image[this.size * y + x];
+            const signal = new Array(this.size);
+            for (let x = 0; x < this.size; x++) {
+                signal[x] = new Array(this.size);
+                for (let y = 0; y < this.size; y++) {
+                    signal[x][y] = image[this.size * (y + x)];
                 }
             }
             const sqrt = this._setSqrt();
@@ -76,6 +54,27 @@ class PerceptualHash {
             }
             return hash;
         });
+    }
+    distance(imageA, imageB, humanize) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const hash1 = yield this.execute(imageA);
+            const hash2 = yield this.execute(imageB);
+            const _distance = this.distanceHash(hash1, hash2);
+            const result = { distance: _distance, hashes: { hashA: hash1, hashB: hash2 } };
+            if (humanize) {
+                result.distance = Utils_1.default.humanize(_distance);
+            }
+            return result;
+        });
+    }
+    distanceHash(a, b) {
+        let count = 0;
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i]) {
+                count++;
+            }
+        }
+        return count;
     }
     _setCosine() {
         const { size } = this;
@@ -100,6 +99,7 @@ class PerceptualHash {
     _initDct(signal, cos, sqrt) {
         const { size } = this;
         const sampleArr = new Array(size);
+        console.log(size, sampleArr);
         for (let u = 0; u < size; u++) {
             sampleArr[u] = new Array(size);
             for (let v = 0; v < size; v++) {
