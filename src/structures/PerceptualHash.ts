@@ -40,7 +40,7 @@ export default class PerceptualHash {
 		return distance;
 	}
 
-	private async execute(image: string | Buffer) {
+	public async execute(image: string | Buffer) {
 		image = await sharp(image)
 			.grayscale()
 			.resize(this.size, this.size, {fit: 'fill'})

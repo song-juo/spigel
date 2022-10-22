@@ -34,4 +34,12 @@ export default new class Tamayo {
 
 		return this._pHash.distanceHash(hashA, hashB, humanize);
 	}
+
+	public async hash(image: string | Buffer, algorithm: 'dhash' | 'phash') {
+		if (algorithm === 'dhash') {
+			return this._dHash.execute(image);
+		}
+
+		return this._pHash.execute(image);
+	}
 }();
