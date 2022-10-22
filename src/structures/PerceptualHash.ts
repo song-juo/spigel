@@ -15,7 +15,33 @@ export default class PerceptualHash {
 		this.lowSize = 8;
 	}
 
-	public async execute(image: Buffer) {
+	public async distance(imageA: string | Buffer, imageB: string | Buffer, humanize: boolean): Promise<DistanceResult> {
+		const hash1 = await this.execute(imageA);
+		const hash2 = await this.execute(imageB);
+
+		const _distance = this.distanceHash(hash1, hash2);
+
+		const result: DistanceResult = {distance: _distance, hashes: {hashA: hash1, hashB: hash2}};
+
+		if (humanize) {
+			result.distance = Utils.humanize(_distance);
+		}
+
+		return result;
+	}
+
+	public distanceHash(a: string, b: string) {
+		let count = 0;
+		for (let i = 0; i < a.length; i++) {
+			if (a[i] !== b[i]) {
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	private async execute(image: string | Buffer) {
 		image = await sharp(image)
 			.grayscale()
 			.resize(this.size, this.size, {fit: 'fill'})
@@ -54,32 +80,6 @@ export default class PerceptualHash {
 		}
 
 		return hash;
-	}
-
-	public async distance(imageA: Buffer, imageB: Buffer, humanize: boolean): Promise<DistanceResult> {
-		const hash1 = await this.execute(imageA);
-		const hash2 = await this.execute(imageB);
-
-		const _distance = this.distanceHash(hash1, hash2);
-
-		const result: DistanceResult = {distance: _distance, hashes: {hashA: hash1, hashB: hash2}};
-
-		if (humanize) {
-			result.distance = Utils.humanize(_distance);
-		}
-
-		return result;
-	}
-
-	public distanceHash(a: string, b: string) {
-		let count = 0;
-		for (let i = 0; i < a.length; i++) {
-			if (a[i] !== b[i]) {
-				count++;
-			}
-		}
-
-		return count;
 	}
 
 	private _setCosine(): number[] {
