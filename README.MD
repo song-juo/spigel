@@ -22,8 +22,8 @@ const result = await compare('./example.png', './example.jpg');
 }
 ```
 
-### Documentation
-Coming soon...
+### 📖 Documentation
+
   
 
 ### 📝 ToDo List - Please, contribute!
