@@ -44,7 +44,11 @@ Coming soon...
 
 - [x] Implement pHash (Perceptual Hash)
 
-- [ ] Function to Class structure conversion
-    - [ ] Convert algorithm functions to classes
-    - [ ] 
-    - [ ] 
+- [x] Function to Class structure conversion
+    - [x] Convert algorithm functions to classes
+    - [x] Assert typings to algorithms 
+    - [x] Humanize comparison results
+
+- [] Write a proper documentation
+- [] Publish new release to npm
+- [] Implement AverageHash
