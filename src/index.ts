@@ -24,4 +24,14 @@ export default new class Tamayo {
 
 		return this._pHash.distance(imageA, imageB, humanize);
 	}
+
+	public async compareHash(hashA: string, hashB: string, options: ComparisonOptions = {algorithm: 'phash', humanize: false}) {
+		const humanize = Boolean(options?.humanize);
+
+		if (options.algorithm === 'dhash') {
+			return this._dHash.distanceHash(hashA, hashB, humanize);
+		}
+
+		return this._pHash.distanceHash(hashA, hashB, humanize);
+	}
 }();
