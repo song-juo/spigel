@@ -54,5 +54,5 @@ const result = await compare('./example.png', './example2.png', { humanize: true
 	- [x] Assert typings to algorithms
 	- [x] Humanize comparison results
 
-- [ ] Write a detailed documentation
+- [x] Write a detailed documentation
 - [ ] First Tamayo's major release
