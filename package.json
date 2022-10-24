@@ -1,10 +1,12 @@
 {
   "name": "tamayo",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --declaration"
@@ -14,11 +16,16 @@
   "license": "ISC",
   "dependencies": {
     "big-integer": "^1.6.51",
-    "sharp": "^0.30.3"
+    "sharp": "^0.31.1"
   },
   "devDependencies": {
-    "typescript": "^4.8.4",
     "@types/node": "^18.11.0",
-    "@types/sharp": "^0.31.0"
+    "@types/sharp": "^0.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-config-xo": "^0.42.0",
+    "eslint-config-xo-typescript": "^0.53.0",
+    "typescript": "^4.8.4"
   }
 }

@@ -4,6 +4,7 @@
 # NODEJS VENDOR
 node_modules
 pnpm-lock.yaml
+package-lock.json
 
 # Exclude test file & typescript product
 src/test.ts
