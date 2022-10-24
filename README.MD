@@ -26,7 +26,7 @@ npm i tamayo
 import { compare } from  'tamayo';
 
 async function someFunction() {
-const result = await compare('./example.png', './example2.png');
+const result = await compare('./example.png', './example2.png', { humanize: true });
 // => { distance: 'different', hash: { hashA: '...', hashB: '...' } }
 }
 ```
