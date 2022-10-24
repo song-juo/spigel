@@ -3,7 +3,11 @@
   
 
 <p align="center">
-<img  src="https://i.imgur.com/9jz7C6W.png"></img>
+<img  src="https://i.imgur.com/9jz7C6W.png"/>
+<br/>
+<img src="https://i.imgur.com/96EInCB.png"/>
+<img src="https://i.imgur.com/32It8av.png"/>
+<img src="https://forthebadge.com/images/badges/built-with-love.svg"/>
 </p>
 
 **Fast** node library which implements many hashing algorithms and media manipulation bindings into a *friendly API* which **discards the use of AI (Artificial Intelligence)** for image semelliance level classsification trough the use of pure math.
@@ -19,7 +23,7 @@ npm i tamayo
 ### 🖼️ It's simple as:
 
 ```ts
-import tamayo from  'tamayo';
+import { compare } from  'tamayo';
 
 async function someFunction() {
 const result = await compare('./example.png', './example2.png');
