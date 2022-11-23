@@ -7,8 +7,8 @@ import DHash from './structures/DiferencialHash';
 import type {DistanceResult} from './typing/structures';
 
 export default new class Tamayo {
-	private readonly _dHash: DifferencialHash;
-	private readonly _pHash: PerceptualHash;
+	_dHash: DifferencialHash;
+	_pHash: PerceptualHash;
 
 	constructor() {
 		this._dHash = new DHash();
@@ -30,7 +30,7 @@ export default new class Tamayo {
 
 		if (options.algorithm === 'dhash') {
 			return this._dHash.distanceHash(hashA, hashB, humanize);
-		}
+		} 
 
 		return this._pHash.distanceHash(hashA, hashB, humanize);
 	}
