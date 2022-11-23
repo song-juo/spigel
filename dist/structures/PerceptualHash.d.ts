@@ -4,9 +4,9 @@ export default class PerceptualHash {
     private readonly size;
     private readonly lowSize;
     constructor();
-    execute(image: Buffer): Promise<string>;
-    distance(imageA: Buffer, imageB: Buffer, humanize: boolean): Promise<DistanceResult>;
-    distanceHash(a: string, b: string): number;
+    distance(imageA: string | Buffer, imageB: string | Buffer, humanize: boolean): Promise<DistanceResult>;
+    distanceHash(a: string, b: string, humanize: boolean): string | number;
+    execute(image: string | Buffer): Promise<string>;
     private _setCosine;
     private _setSqrt;
     private _initDct;

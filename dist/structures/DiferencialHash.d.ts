@@ -5,8 +5,8 @@ export default class DifferencialHash {
     private readonly height;
     constructor();
     execute(imagePath: string | Buffer): Promise<string>;
-    compareHash(hash: string, hash2: string): number;
-    distance(imagePath: string | Buffer, image2: string | Buffer, humanize?: boolean): Promise<DistanceResult>;
+    distanceHash(hash: string, hash2: string, humanize: boolean): string | number;
+    distance(imagePath: string | Buffer, image2: string | Buffer, humanize: boolean): Promise<DistanceResult>;
     private _difference;
     private _hex2Dec;
 }
