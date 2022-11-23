@@ -9,3 +9,4 @@ package-lock.json
 # Exclude test file & typescript product
 src/test.ts
 garbage
+tests
