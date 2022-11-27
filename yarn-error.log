@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\55719\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Users\55719\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\55719\bin;C:\Program Files\Google\Chrome\Application;C:\Program Files (x86)\Zulu\zulu-17-jre\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\dotnet;C:\Users\55719\AppData\Local\Microsoft\WindowsApps;C:\Program Files\platform-tools;C:\Users\55719\AppData\Roaming\npm;C:\Users\55719\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\55719\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\55719\.deno\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.1.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\55719\AppData\Local\Yarn\Cache\v6\npm-estraverse-4.3.0-398ad3f3c5a24948be7725e83d11a7de28cdbd1d-integrity\node_modules\estraverse\estraverse.js' -> 'C:\Users\55719\Documents\GitHub\tamayo\node_modules\@typescript-eslint\utils\node_modules\estraverse\estraverse.js'
+
+npm manifest: 
+  {
+    "name": "tamayo",
+    "version": "1.0.5",
+    "description": "",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+      "dist/"
+    ],
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "tsc --declaration"
+    },
+    "keywords": [],
+    "author": "George Santos (A.K.A Myur4)",
+    "license": "ISC",
+    "dependencies": {
+      "big-integer": "^1.6.51",
+      "sharp": "^0.31.1"
+    },
+    "devDependencies": {
+      "@types/node": "^18.11.9",
+      "@types/sharp": "^0.31.0",
+      "@typescript-eslint/eslint-plugin": "^5.40.1",
+      "@typescript-eslint/parser": "^5.40.1",
+      "eslint": "^8.25.0",
+      "eslint-config-xo": "^0.42.0",
+      "eslint-config-xo-typescript": "^0.53.0",
+      "typescript": "^4.8.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
