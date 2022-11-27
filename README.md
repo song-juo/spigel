@@ -12,18 +12,18 @@
 
 **Fast** node library which implements many hashing algorithms and media manipulation bindings into a *friendly API* which **discards the use of ML (Machine Learning)** for image semelliance level classsification trough the use of pure math.
 
-📒 ***[Check our Documentation!](https://github.com/myur4/tamayo/wiki)***
+📒 ***[Check our Documentation!](https://github.com/myur4/hikaku/wiki)***
 
 ### Give it a try 🌸
 
 ```bash
-npm i tamayo
+npm i hikaku
 ```
 
 ### 🖼️ It's simple as:
 
 ```ts
-import { compare } from  'tamayo';
+import { compare } from  'hikaku';
 
 async function someFunction() {
 const result = await compare('./example.png', './example2.png', { humanize: true });
@@ -55,4 +55,4 @@ const result = await compare('./example.png', './example2.png', { humanize: true
 	- [x] Humanize comparison results
 
 - [x] Write a detailed documentation
-- [x] First Tamayo's major release
+- [x] First hikaku's major release
