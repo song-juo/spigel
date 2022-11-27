@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 
-import type {DistanceResult} from '../typing/structures';
+import type {DistanceResult} from '..';
 
 import sharp from 'sharp';
 import Utils from './Utils';

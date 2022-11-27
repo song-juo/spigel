@@ -1,10 +1,18 @@
-import type DifferencialHash from './structures/DiferencialHash';
-import type PerceptualHash from './structures/PerceptualHash';
-import type {ComparisonOptions} from './typing';
+import type DifferencialHash from './lib/DiferencialHash';
+import type PerceptualHash from './lib/PerceptualHash';
 
-import PHash from './structures/PerceptualHash';
-import DHash from './structures/DiferencialHash';
-import type {DistanceResult} from './typing/structures';
+import PHash from './lib/PerceptualHash';
+import DHash from './lib/DiferencialHash';
+
+export type ComparisonOptions = {
+	algorithm: 'phash' | 'dhash';
+	humanize?: boolean;
+};
+
+export type DistanceResult = {
+	distance: number | string;
+	hashes?: {hashA: string; hashB: string};
+};
 
 export default new class Tamayo {
 	_dHash: DifferencialHash;

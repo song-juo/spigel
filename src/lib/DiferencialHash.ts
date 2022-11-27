@@ -2,7 +2,8 @@ import sharp from 'sharp';
 import bigInt from 'big-integer';
 import {readFileSync} from 'fs';
 
-import type {DistanceResult} from '../typing/structures';
+import type {DistanceResult} from '..';
+
 import Utils from './Utils';
 
 /* This code implements the "dHash" algorithm described in: https://www.hackerfactor.com/blog/?/archives/529-Kind-of-Like-That.html */
@@ -42,8 +43,6 @@ export default class DifferencialHash {
 	public distanceHash(hash: string, hash2: string, humanize: boolean): string | number {
 		const calcHash = this._hex2Dec(hash);
 		const calcHash2 = this._hex2Dec(hash2);
-
-		console.log(calcHash);
 
 		const difference = bigInt(calcHash).xor(calcHash2);
 
