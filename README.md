@@ -5,8 +5,7 @@
 <p align="center">
 <img  src="https://i.imgur.com/IFwH9ju.png"/>
 <br/>
-<img src="https://i.imgur.com/96EInCB.png"/>
-<img src="https://i.imgur.com/32It8av.png"/>
+
 <img src="https://forthebadge.com/images/badges/built-with-love.svg"/>
 </p>
 
@@ -23,10 +22,10 @@ npm i hikaku
 ### 🖼️ It's simple as:
 
 ```ts
-import { compare } from  'hikaku';
+import hikaku from  'hikaku';
 
 async function someFunction() {
-const result = await compare('./example.png', './example2.png', { humanize: true });
+const result = await hikaku.compare('./example.png', './example2.png', { humanize: true });
 // => { distance: 'different', hash: { hashA: '...', hashB: '...' } }
 }
 ```
