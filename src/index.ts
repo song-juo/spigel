@@ -15,6 +15,8 @@ export type ComparisonOptions = {
  * interpreted assuming those conditions:
  * - `distance > 0`: Differences were found. Higher nubers, higher difference level.
  * - `distance = 0`: The comparison returned no differences; It can happen when the difference is too small, or when the given images/hashes are equal.
+ * 
+ * @hashes `hashA` and `hashB` are respective representations of the image inputs
  */
 export type DistanceResult = {
 	distance: number | string;
