@@ -1,5 +1,5 @@
 <p align="center">
-<img  src="./docs/assets/images/logo.png"/>
+<img  src="https://spigel.gsant.org/assets/images/logo.png"/>
 <br/>
 
 <img src="https://forthebadge.com/images/badges/built-with-love.svg"/>
