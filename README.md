@@ -1,9 +1,5 @@
-
-
-  
-
 <p align="center">
-<img  src="https://i.imgur.com/IFwH9ju.png"/>
+<img  src="./docs/assets/images/logo.png"/>
 <br/>
 
 <img src="https://forthebadge.com/images/badges/built-with-love.svg"/>
@@ -11,21 +7,21 @@
 
 **Fast** node library which implements many hashing algorithms and media manipulation bindings into a *friendly API* which **discards the use of ML (Machine Learning)** for image semelliance level classsification trough the use of pure math.
 
-📒 ***[Check our Documentation!](https://github.com/myur4/hikaku/wiki)***
+📒 ***[Check our Documentation!](https://spigel.gsant.org/)***
 
 ### Give it a try 🌸
 
 ```bash
-npm i hikaku
+npm i spigel
 ```
 
 ### 🖼️ It's simple as:
 
 ```ts
-import hikaku from  'hikaku';
+import { compare } from 'spigel';
 
 async function someFunction() {
-const result = await hikaku.compare('./example.png', './example2.png', { humanize: true });
+const result = await compare('./example.png', './example2.png', { humanize: true });
 // => { distance: 'different', hash: { hashA: '...', hashB: '...' } }
 }
 ```
@@ -54,4 +50,7 @@ const result = await hikaku.compare('./example.png', './example2.png', { humaniz
 	- [x] Humanize comparison results
 
 - [x] Write a detailed documentation
+
 - [x] First hikaku's major release
+
+- [x] Project's name changed from "Hikaku" to "Spigel" 
